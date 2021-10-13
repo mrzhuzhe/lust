@@ -41,7 +41,7 @@ def find_best_cluster(game_state: Game, unit: Unit, distance_multiplier = -0.5, 
     resource_size_of_current_cluster = game_state.xy_to_resource_group_id.get_point(current_leader)
     if len(units_mining_on_current_cluster) >= resource_size_of_current_cluster:
         consider_different_cluster_must = True
-
+    
     for y in game_state.y_iteration_order:
         for x in game_state.x_iteration_order:
 

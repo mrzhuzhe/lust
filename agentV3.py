@@ -17,7 +17,7 @@ game_state = None
 import builtins as __builtin__
 from lux.game import Game, Missions
 
-from make_actions import make_city_actions, make_unit_missions, make_unit_actions
+from make_actionsV3 import make_city_actions, make_unit_missions, make_unit_actions
 from make_annotations import annotate_game_state, annotate_missions, annotate_movements
 
 game_state = Game()

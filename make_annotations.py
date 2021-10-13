@@ -66,11 +66,11 @@ def annotate_missions(game_state: Game, missions: Missions, DEBUG=False):
             annotation = annotate.x(mission.target_position.x, mission.target_position.y)
             annotations.append(annotation)
 
-    annotation = annotate.sidetext("Unit Count: {}-{} Citytiles: {}-{} Groups: {}/{} Runtime: {:.3f}".format(
+    annotation = annotate.sidetext("Unit Count: {}-{} Citytiles: {}-{} Groups: {}/{} Runtime: {:.3f} MISSION: ".format(
         len(game_state.player.units), len(game_state.opponent.units),
         len(game_state.player_city_tile_xy_set), len(game_state.opponent_city_tile_xy_set),
         game_state.targeted_cluster_count, game_state.xy_to_resource_group_id.get_group_count(),
-        time.time() - game_state.compute_start_time))
+        time.time() - game_state.compute_start_time), )
     annotations.append(annotation)
 
     return annotations

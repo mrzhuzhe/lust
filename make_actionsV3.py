@@ -1,4 +1,3 @@
-# 10/13/2021 Reduce forrest using
 # functions executing the actions
 
 import builtins as __builtin__
@@ -29,12 +28,6 @@ def make_city_actions(game_state: Game, missions: Missions, DEBUG=False) -> List
     units_cap = sum([len(x.citytiles) for x in player.cities.values()])
     units_cnt = len(player.units)  # current number of units
 
-    unit_limit_exceeded = (units_cnt >= units_cap)
-    
-    if player.researched_uranium() and unit_limit_exceeded:
-        print("City no action because unit_limit_exceeded and player.researched_uranium")
-        return []
-
     actions: List[str] = []
 
     def do_research(city_tile: CityTile):
@@ -58,26 +51,23 @@ def make_city_actions(game_state: Game, missions: Missions, DEBUG=False) -> List
     city_tiles.sort(key=lambda city_tile:
         (city_tile.pos.x*game_state.x_order_coefficient, city_tile.pos.y*game_state.y_order_coefficient))
 
-    """
-    
-    [TODO] Approach
-    1. we can prefer building worker or research
-    2. create cart 
-
-    """    
-
     for city_tile in city_tiles:
         if not city_tile.can_act():
             continue
 
-        """
-            TODO this will be with city upkeep and fuel storage
-        """
+        unit_limit_exceeded = (units_cnt >= units_cap)
 
-        def optimizeResearchDecision():
-            return game_state.turns_to_night < 3
+        cluster_leader = game_state.xy_to_resource_group_id.find(tuple(city_tile.pos))
+        cluster_unit_limit_exceeded = \
+            game_state.xy_to_resource_group_id.get_point(tuple(city_tile.pos)) <= len(game_state.resource_leader_to_locating_units[cluster_leader])
+        if cluster_unit_limit_exceeded:
+            print("unit_limit_exceeded", city_tile.cityid, tuple(city_tile.pos))
 
-        if not player.researched_uranium() and optimizeResearchDecision():
+        if player.researched_uranium() and unit_limit_exceeded:
+            print("skip city", city_tile.cityid, tuple(city_tile.pos))
+            continue
+
+        if not player.researched_uranium() and game_state.turns_to_night < 3:
             print("research and dont build units at night", tuple(city_tile.pos))
             do_research(city_tile)
             continue
@@ -86,18 +76,7 @@ def make_city_actions(game_state: Game, missions: Missions, DEBUG=False) -> List
         travel_range = game_state.turns_to_night // GAME_CONSTANTS["PARAMETERS"]["UNIT_ACTION_COOLDOWN"]["WORKER"]
         resource_in_travel_range = nearest_resource_distance < travel_range
 
-        """
-            TODO this can be with leap farm
-        """
-        def optimizeBuildWorkDecition():
-            cluster_leader = game_state.xy_to_resource_group_id.find(tuple(city_tile.pos))
-            cluster_unit_limit_exceeded = \
-                game_state.xy_to_resource_group_id.get_point(tuple(city_tile.pos)) <= len(game_state.resource_leader_to_locating_units[cluster_leader])
-            if cluster_unit_limit_exceeded:
-                print("unit_limit_exceeded", city_tile.cityid, tuple(city_tile.pos))
-            return not unit_limit_exceeded and not cluster_unit_limit_exceeded
-
-        if not unit_limit_exceeded and optimizeBuildWorkDecition():
+        if resource_in_travel_range and not unit_limit_exceeded and not cluster_unit_limit_exceeded:
             print("build_worker", city_tile.cityid, city_tile.pos.x, city_tile.pos.y, nearest_resource_distance, travel_range)
             build_workers(city_tile)
             continue
