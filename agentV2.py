@@ -5,8 +5,8 @@ from lux.constants import Constants
 from lux.game_constants import GAME_CONSTANTS
 from lux import annotate
 
-from agents.research import keeping_research
-from agents.finder.convexhull import getPolynomialHull
+from mytest.research import keeping_research
+from mytest.finder.convexhull import getPolynomialHull
 
 DIRECTIONS = Constants.DIRECTIONS
 game_state = None

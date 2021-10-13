@@ -1,7 +1,7 @@
 from typing import Dict
 
 from .constants import Constants
-from .game_map import Position
+from .game_position import  Position
 from .game_constants import GAME_CONSTANTS
 
 UNIT_TYPES = Constants.UNIT_TYPES
@@ -18,7 +18,10 @@ class Player:
         return self.research_points >= GAME_CONSTANTS["PARAMETERS"]["RESEARCH_REQUIREMENTS"]["COAL"]
     def researched_uranium(self) -> bool:
         return self.research_points >= GAME_CONSTANTS["PARAMETERS"]["RESEARCH_REQUIREMENTS"]["URANIUM"]
-
+    def make_index_units_by_id(self):
+        self.units_by_id: Dict[str, Unit] = {}
+        for unit in self.units:
+            self.units_by_id[unit.id] = unit
 
 class City:
     def __init__(self, teamid, cityid, fuel, light_upkeep):
@@ -27,6 +30,8 @@ class City:
         self.fuel = fuel
         self.citytiles: list[CityTile] = []
         self.light_upkeep = light_upkeep
+        self.night_fuel_duration = int(self.fuel // self.light_upkeep)
+
     def _add_city_tile(self, x, y, cooldown):
         ct = CityTile(self.team, self.cityid, x, y, cooldown)
         self.citytiles.append(ct)
@@ -71,7 +76,22 @@ class Cargo:
 
     def __str__(self) -> str:
         return f"Cargo | Wood: {self.wood}, Coal: {self.coal}, Uranium: {self.uranium}"
+    def get_shorthand(self) -> str:
+        total_resources = self.wood + self.coal + self.uranium
+        if total_resources >= 100:
+            total_resources_string = "F"
+        else:
+            total_resources_string = str(total_resources)
 
+        if self.wood > total_resources//2:
+            return f"{total_resources_string}W"
+        if self.coal > total_resources//2:
+            return f"{total_resources_string}C"
+        if self.uranium > total_resources//2:
+            return f"{total_resources_string}U"
+        if total_resources:
+            return f"{total_resources_string}"
+        return "" 
 
 class Unit:
     def __init__(self, teamid, u_type, unitid, x, y, cooldown, wood, coal, uranium):
@@ -138,3 +158,24 @@ class Unit:
         return the command to pillage whatever is underneath the worker
         """
         return "p {}".format(self.id)
+    def compute_travel_range(self, turn_info=None) -> None:
+        fuel_per_turn = GAME_CONSTANTS["PARAMETERS"]["LIGHT_UPKEEP"]["WORKER"]
+        cooldown_required = GAME_CONSTANTS["PARAMETERS"]["UNIT_ACTION_COOLDOWN"]["WORKER"]
+        day_length = GAME_CONSTANTS["PARAMETERS"]["DAY_LENGTH"]
+        night_length = GAME_CONSTANTS["PARAMETERS"]["NIGHT_LENGTH"]
+
+        turn_survivable = (self.cargo.wood // GAME_CONSTANTS["PARAMETERS"]["RESOURCE_TO_FUEL_RATE"]["WOOD"]) // fuel_per_turn
+        turn_survivable += self.cargo.coal + self.cargo.uranium  # assumed RESOURCE_TO_FUEL_RATE > fuel_per_turn
+        self.night_turn_survivable = turn_survivable
+        self.night_travel_range = turn_survivable // cooldown_required  # plus one perhaps
+
+        if turn_info:
+            turns_to_night, turns_to_dawn, is_day_time = turn_info
+            travel_range = max(1, turns_to_night // cooldown_required + self.night_travel_range - cooldown_required)
+            if self.night_turn_survivable > turns_to_dawn and not is_day_time:
+                travel_range = day_length // cooldown_required + self.night_travel_range
+            if self.night_turn_survivable > night_length:
+                travel_range = day_length // cooldown_required + self.night_travel_range
+            self.travel_range = travel_range
+    def encode_tuple_for_cmp(self):
+        return (self.cooldown, self.cargo.wood, self.cargo.coal, self.cargo.uranium, self.is_worker())
