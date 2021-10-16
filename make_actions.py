@@ -147,7 +147,12 @@ def make_unit_missions(game_state: Game, missions: Missions, DEBUG=False) -> Mis
                 mission = Mission(unit.id, nearest_position, unit.build_city())
                 missions.add(mission)
                 continue
-
+        
+        """        
+        TODO do something according to different cargo 
+        unit.cargo.wood >= 60:
+        """
+        
         if unit.id in missions:
             mission: Mission = missions[unit.id]
             if mission.target_position == unit.pos:
