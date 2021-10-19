@@ -17,7 +17,8 @@ sudo lux-ai-2021 main.py main-opposite.py --out=./replays/eplay.json
 2. 8th https://www.kaggle.com/c/halite/discussion/183312  https://www.youtube.com/watch?v=WjFdD7PDGw0&t=3843s
 本次比赛也有imitate 和 rl的model
 1. Imitate https://www.kaggle.com/shoheiazuma/lux-ai-with-imitation-learning
-2. https://www.kaggle.com/dwight9339/rule-based-q-learning-agent
+2. q-learning https://www.kaggle.com/dwight9339/rule-based-q-learning-agent
+3. PPO https://www.kaggle.com/c/lux-ai-2021/discussion/267351  notebook https://www.kaggle.com/glmcdona/reinforcement-learning-openai-ppo-with-python-game?scriptVersionId=76133670
 
 ## 方向
 
@@ -45,3 +46,10 @@ sudo lux-ai-2021 main.py main-opposite.py --out=./replays/eplay.json
 - 分阶段
 1. 前期重争夺资源和研究
 2. 后期重保护城市
+
+## Imitate learning
+
+1. 对于模仿学习和IRL和ppo和behaveclone的区别，模仿学习不同于behave clone的区别在于考虑了多层state和action的关系，和irl的区别在于增加了正向rl让表现至少好于irl，ppo应该只是再正向中增加了采样方式
+2. actor critic 只是一种demostator 的 gan解释
+3. PPO 的reward 是人工制定的？？？？
+4. 试一下SB3 https://github.com/araffin/rl-tutorial-jnrr19/tree/sb3
