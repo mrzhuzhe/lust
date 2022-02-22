@@ -39,7 +39,7 @@ def should_early_stop(game_state: Game) -> bool:
             (ct_pct >= 0.75).any() or
             (unit_pct >= 0.75).any())
 
-
+# interface declare
 class RewardSpec(NamedTuple):
     reward_min: float
     reward_max: float
@@ -120,7 +120,7 @@ class GameResultReward(FullGameRewardSpace):
         # so this should keep it strictly so we break by city tiles then unit count
         return ct_count * 10000 + unit_count
 
-
+# no used
 class CityTileReward(FullGameRewardSpace):
     @staticmethod
     def get_reward_spec() -> RewardSpec:
@@ -176,6 +176,11 @@ class StatefulMultiReward(FullGameRewardSpace):
             "step": 0.,
         }
         self.weights.update({key: val for key, val in kwargs.items() if key in self.weights.keys()})
+        
+        print("----------------reward weight---------------")
+        print(self.weights)
+        print("-------------------------------")
+
         for key in copy.copy(kwargs).keys():
             if key in self.weights.keys():
                 del kwargs[key]
@@ -245,7 +250,7 @@ class StatefulMultiReward(FullGameRewardSpace):
         self.research_points = np.zeros_like(self.research_points)
         self.total_fuel = np.zeros_like(self.total_fuel)
 
-
+# not used
 class ZeroSumStatefulMultiReward(StatefulMultiReward):
     @staticmethod
     def get_reward_spec() -> RewardSpec:
@@ -260,7 +265,7 @@ class ZeroSumStatefulMultiReward(StatefulMultiReward):
         reward = np.array(super(ZeroSumStatefulMultiReward, self).compute_rewards(game_state, done))
         return tuple(reward - reward.mean())
 
-
+# not used
 class PunishingExponentialReward(BaseRewardSpace):
     @staticmethod
     def get_reward_spec() -> RewardSpec:

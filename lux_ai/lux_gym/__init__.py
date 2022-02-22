@@ -47,6 +47,7 @@ def create_env(flags, device: torch.device, seed: Optional[int] = None) -> DictE
         env = PadFixedShapeEnv(env)
         env = LoggingEnv(env, reward_space)
         envs.append(env)
+        
     env = VecEnv(envs)
     env = PytorchEnv(env, device)
     env = DictEnv(env)

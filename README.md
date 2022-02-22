@@ -1,5 +1,64 @@
 # Lux game
 
+## 2022/02/22 
+
+### checklist
+1. env
+    env wrapper
+
+    reward:
+        according to readme seems only use StatefulMultiReward/PunishingExponentialReward
+    action:
+        how action mask work ?
+    paddingwrapper
+        how mask work ?
+2. observe
+    FixedShapeContinuousObs what different between v1 and v2 ?
+    init on obs observed on wrapper
+
+
+3. loss 
+4. trian 
+    model 
+
+5. log 
+6. eval 
+7. test
+
+### question:
+
+1. v-trace can be used in q-learning ?
+2. upgo with no paper ?
+3. why cannot use batchnorm
+4. what is teacher student
+5. how to reward shaping
+6. how to find improvement
+7. how to self play
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 比赛完后记得删掉 
 npm install -g @lux-ai/2021-challenge@latest
 

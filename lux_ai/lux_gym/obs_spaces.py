@@ -24,6 +24,10 @@ ALL_SUBTASKS.append(None)
 SUBTASK_ENCODING = {
     task: i for i, task in enumerate(ALL_SUBTASKS)
 }
+
+print("---------- SUBTASK_ENCODING -------------")
+print(SUBTASK_ENCODING)
+print("----------------------------------------")
 # Player count
 P = 2
 
