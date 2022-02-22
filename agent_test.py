@@ -1,3 +1,4 @@
+# lux-ai-2021 main.py main.py --python=python3 --out=replays/replay.json --width 12 --height 12 --loglevel 2 --memory 8000 --maxtime 20000
 import fire
 import math
 import multiprocessing as mp
@@ -24,6 +25,7 @@ def generate_game_command(
         "--memory 8000",
         "--maxtime 20000",
         "storeLogs false",
+        "--python=python3",
         f"--width {map_size:d}",
         f"--height {map_size:d}",
         f"--out {replay_file}"
@@ -64,7 +66,7 @@ def main(
         *args,
         out_dir: Optional[str] = None,
         n_workers: int = 4,
-        n_games: int = 80,
+        n_games: int = 8,
         cuda_visible_devices: Union[int, Tuple[int, ...]] = (0,),
 ) -> NoReturn:
     agents = [Path(a) for a in args]

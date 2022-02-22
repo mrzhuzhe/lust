@@ -15,7 +15,7 @@ unroll_length: 16
 batch_size: 4
 discounting: 0.999
 model_arch: conv_model
-n_blocks: 24
+n_blocks: 8
 hidden_dim: 128
 n_merge_layers: 1
 normalize: false
