@@ -11,9 +11,9 @@ name: conv_phase4_small_teacher
 # The wandb project name
 project: Lux_AI_2021
 # The wandb user to log to
-entity: isaiahpressman
+entity: mrzhuzhe
 # The wandb group for the run
-group: after_september_patch
+group: version0
 
 ## ENV params
 act_space: BasicActionSpace

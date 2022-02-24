@@ -11,9 +11,9 @@ name: conv_phase1_shaped_reward
 # The wandb project name
 project: Lux_AI_2021
 # The wandb user to log to
-entity: isaiahpressman
+entity: mrzhuzhe
 # The wandb group for the run
-group: after_september_patch
+group: version0
 
 ## ENV params
 act_space: BasicActionSpace
@@ -74,3 +74,7 @@ disable_wandb: True
 model_log_freq: 100
 # file_descriptor or file_system
 sharing_strategy: file_descriptor
+
+
+load_dir: /mnt/886E37ED6E37D324/work/code/lust/outputs/02-22/11-25-13/
+checkpoint_file: 04601536.pt

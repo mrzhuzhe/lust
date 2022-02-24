@@ -177,9 +177,9 @@ class StatefulMultiReward(FullGameRewardSpace):
         }
         self.weights.update({key: val for key, val in kwargs.items() if key in self.weights.keys()})
         
-        print("----------------reward weight---------------")
-        print(self.weights)
-        print("-------------------------------")
+        #print("----------------reward weight---------------")
+        #print(self.weights)
+        #print("-------------------------------")
 
         for key in copy.copy(kwargs).keys():
             if key in self.weights.keys():

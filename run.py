@@ -4,6 +4,8 @@ import io
 with redirect_stdout(io.StringIO()):
     import kaggle_environments
 
+import wandb
+
 import hydra
 import logging
 import os
@@ -55,13 +57,14 @@ def get_default_flags(flags: DictConfig) -> DictConfig:
     flags.setdefault("n_value_warmup_batches", 0)
 
     # Miscellaneous params
-    flags.setdefault("disable_wandb", True)
+    flags.setdefault("disable_wandb", False)
     flags.setdefault("debug", False)
 
     return OmegaConf.create(flags)
 
 
-@hydra.main(config_path="conf", config_name="conv_phase1_shaped_reward")
+#@hydra.main(config_path="conf", config_name="conv_phase1_shaped_reward")
+@hydra.main(config_path="conf", config_name="conv_phase2_game_result")
 def main(flags: DictConfig):
     cli_conf = OmegaConf.from_cli()
     if Path("config.yaml").exists():
@@ -81,6 +84,14 @@ def main(flags: DictConfig):
     flags = get_default_flags(flags)
     logging.info(OmegaConf.to_yaml(flags, resolve=True))
     OmegaConf.save(flags, "config.yaml")
+    if not flags.disable_wandb:
+        wandb.init(
+            config=vars(flags),
+            project=flags.project,
+            entity=flags.entity,
+            group=flags.group,
+            name=flags.name,
+        )
 
     flags = flags_to_namespace(OmegaConf.to_container(flags))
     mp.set_sharing_strategy(flags.sharing_strategy)

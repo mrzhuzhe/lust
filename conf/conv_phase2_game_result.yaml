@@ -11,13 +11,13 @@ name: conv_phase2_game_result
 # The wandb project name
 project: Lux_AI_2021
 # The wandb user to log to
-entity: isaiahpressman
+entity: mrzhuzhe
 # The wandb group for the run
-group: after_september_patch
+group: version0
 
 ## ENV params
 act_space: BasicActionSpace
-obs_space: FixedShapeContinuousObsV2
+obs_space: FixedShapeContinuousObs
 obs_space_kwargs:
   include_subtask_encoding: False
 reward_space: GameResultReward
@@ -64,7 +64,7 @@ lmb: 0.8
 reduction: sum
 
 # MISCELLANEOUS params
-actor_device: cuda:1
+actor_device: cuda:0
 learner_device: cuda:0
 disable_wandb: False
 model_log_freq: 100
@@ -72,7 +72,7 @@ model_log_freq: 100
 sharing_strategy: file_descriptor
 
 # Continue from previous run
-load_dir: <FOLDER_CONTAINING_TRAINED_PHASE1_MODEL> # E.g. .../outputs/09-01/09-58-50/
-checkpoint_file: <MODEL_WEIGHTS_FILE> # E.g. 05079552.pt
+load_dir: /mnt/886E37ED6E37D324/work/code/lust/outputs/02-22/11-25-13/
+checkpoint_file: 04601536.pt
 weights_only: True
 n_value_warmup_batches: 4000

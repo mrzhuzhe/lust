@@ -23,7 +23,7 @@ import timeit
 import traceback
 from types import SimpleNamespace
 from typing import Dict, Optional, Tuple, Union
-#import wandb
+import wandb
 import warnings
 
 import torch
@@ -520,7 +520,8 @@ def train(flags):
 
     example_info = create_env(flags, torch.device("cpu")).reset(force=True)["info"]
     buffers = create_buffers(flags, example_info)
-
+    
+    print("flags.load_dir", flags.load_dir)
     if flags.load_dir:
         checkpoint_state = torch.load(Path(flags.load_dir) / flags.checkpoint_file, map_location=torch.device("cpu"))
     else:

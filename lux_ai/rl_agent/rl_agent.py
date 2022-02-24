@@ -70,7 +70,7 @@ class RLAgent:
 
         # Load the model
         self.model = create_model(self.model_flags, self.device)
-        print(CHECKPOINT_PATH)
+        #print(CHECKPOINT_PATH)
         checkpoint_states = torch.load(CHECKPOINT_PATH, map_location=self.device)
         self.model.load_state_dict(checkpoint_states["model_state_dict"])
         self.model.eval()
