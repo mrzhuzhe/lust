@@ -66,7 +66,7 @@ def main(
         *args,
         out_dir: Optional[str] = None,
         n_workers: int = 4,
-        n_games: int = 8,
+        n_games: int = 80,
         cuda_visible_devices: Union[int, Tuple[int, ...]] = (0,),
 ) -> NoReturn:
     agents = [Path(a) for a in args]
