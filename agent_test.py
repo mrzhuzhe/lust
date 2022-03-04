@@ -65,7 +65,7 @@ def run_game(game_command: str) -> NoReturn:
 def main(
         *args,
         out_dir: Optional[str] = None,
-        n_workers: int = 2,
+        n_workers: int = 1,
         n_games: int = 8,
         cuda_visible_devices: Union[int, Tuple[int, ...]] = (0,),
 ) -> NoReturn:
