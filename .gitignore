@@ -6,5 +6,5 @@ replays
 errorlogs
 *_vs_*
 
-main02
+main02.py
 lux_ai/rl_agent02

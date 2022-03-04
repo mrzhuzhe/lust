@@ -49,7 +49,7 @@ def kill(proc_pid: int) -> NoReturn:
 
 
 def run_game(game_command: str) -> NoReturn:
-    n = 5
+    n = 5    
     for i in range(n):
         proc = Popen(game_command, shell=True, stdout=open(os.devnull, 'wb'))
         # Time out if a game doesn't finish after 3 minutes
@@ -57,16 +57,16 @@ def run_game(game_command: str) -> NoReturn:
             proc.wait(180.)
             return
         except TimeoutExpired:
-            kill(proc.pid)
-            print(f"\nGame timed out - restarting: {game_command}")
+           kill(proc.pid)
+        print(f"\nGame timed out - restarting: {game_command}")
     print(f"Unable to run game - timed out {n} times: {game_command}")
 
 
 def main(
         *args,
         out_dir: Optional[str] = None,
-        n_workers: int = 4,
-        n_games: int = 80,
+        n_workers: int = 2,
+        n_games: int = 8,
         cuda_visible_devices: Union[int, Tuple[int, ...]] = (0,),
 ) -> NoReturn:
     agents = [Path(a) for a in args]
@@ -110,10 +110,10 @@ def main(
                 map_size=map_size,
                 out_dir=out_dir,
             ))
-
+    #print(os.environ)
     with mp.Pool(processes=n_workers) as pool:
         _ = list(tqdm.tqdm(pool.imap(run_game, game_commands), total=len(game_commands)))
-
+    
 
 if __name__ == '__main__':
     fire.Fire(main)
