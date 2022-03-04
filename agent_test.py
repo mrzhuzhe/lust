@@ -1,4 +1,4 @@
-# lux-ai-2021 main.py main.py --python=python3 --out=replays/replay.json --width 12 --height 12 --loglevel 2 --memory 8000 --maxtime 20000
+# lux-ai-2021 main02.py main02.py --python=python3 --out=replays/replay.json --width 32 --height 32 --loglevel 2 --memory 8000 --maxtime 20000
 import fire
 import math
 import multiprocessing as mp

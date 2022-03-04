@@ -5,3 +5,6 @@ __pycache__/
 replays
 errorlogs
 *_vs_*
+
+main02
+lux_ai/rl_agent02

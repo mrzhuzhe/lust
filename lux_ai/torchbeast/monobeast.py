@@ -693,7 +693,7 @@ def train(flags):
             time.sleep(5)
 
             # Save every checkpoint_freq minutes
-            if timer() - last_checkpoint_time > flags.checkpoint_freq * 60:
+            if timer() - last_checkpoint_time > flags.checkpoint_freq * 60 * 6 * 3:
                 cp_path = str(step).zfill(int(math.log10(flags.total_steps)) + 1)
                 checkpoint(cp_path)
                 last_checkpoint_time = timer()

@@ -13,7 +13,7 @@ project: Lux_AI_2021
 # The wandb user to log to
 entity: mrzhuzhe
 # The wandb group for the run
-group: version0
+group: version1
 
 ## ENV params
 act_space: BasicActionSpace
@@ -37,8 +37,8 @@ discounting: 0.999
 
 ## MODEL params
 model_arch: conv_model
-n_blocks: 8
-hidden_dim: 128
+n_blocks: 4
+hidden_dim: 64
 embedding_dim: 32
 n_merge_layers: 1
 normalize: False
@@ -70,11 +70,11 @@ reduction: sum
 # MISCELLANEOUS params
 actor_device: cuda:0
 learner_device: cuda:0
-disable_wandb: True
-model_log_freq: 100
+disable_wandb: False
+model_log_freq: 10
 # file_descriptor or file_system
 sharing_strategy: file_descriptor
 
 
-load_dir: /mnt/886E37ED6E37D324/work/code/lust/outputs/02-22/11-25-13/
-checkpoint_file: 04601536.pt
+load_dir: /mnt/e28833eb-0c99-4fe2-802a-09fa58d9c9f5/lust/outputs/03-03/17-38-29/
+checkpoint_file: 01641984.pt
