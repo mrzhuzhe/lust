@@ -72,7 +72,7 @@ model_log_freq: 100
 sharing_strategy: file_descriptor
 
 # Continue from previous run
-load_dir: /mnt/e28833eb-0c99-4fe2-802a-09fa58d9c9f5/lust/outputs/shaping01/19-01-48/
-checkpoint_file: 19461632.pt
-weights_only: True
+load_dir: /mnt/e28833eb-0c99-4fe2-802a-09fa58d9c9f5/lust/outputs/03-04/14-38-48/
+checkpoint_file: 05791232.pt
+weights_only: False
 n_value_warmup_batches: 4000

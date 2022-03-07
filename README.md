@@ -4,24 +4,39 @@
 
 ### checklist
 1. env
+    
     env wrapper
 
     reward:
+
         according to readme seems only use StatefulMultiReward/PunishingExponentialReward
+    
     action:
+    
         how action mask work ?
+    
     paddingwrapper
+    
         how mask work ?
+
 2. observe
+    
     FixedShapeContinuousObs what different between v1 and v2 ?
+    
     init on obs observed on wrapper
+    
     how to padding ?
 
 3. loss 
+    
     entropy_loss + upgo_pg_losss + teacher_kl_loss + vtrace_pg_loss
+    
     https://app.diagrams.net/#G1irvJtpYfybkOmW_SkJivFvJGYIG1bHdv
+
 4. trian 
+    
     model 
+    
     why not norm
 
 5. log 
