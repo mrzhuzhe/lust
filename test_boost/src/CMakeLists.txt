@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.0)
-project(Cpp_template_test)
+project(Cpp_Boost_test)
 
 include(ENV.cmake)
 

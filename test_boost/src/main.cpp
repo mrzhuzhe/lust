@@ -26,4 +26,4 @@ int main()
             std::cout << entry << "\n";
     }
 
-}
+ }
