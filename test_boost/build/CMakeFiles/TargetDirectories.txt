@@ -1,3 +1,0 @@
-/home/sanszhu/code/code/lust/test_boost/build/CMakeFiles/rebuild_cache.dir
-/home/sanszhu/code/code/lust/test_boost/build/CMakeFiles/main.dir
-/home/sanszhu/code/code/lust/test_boost/build/CMakeFiles/edit_cache.dir
