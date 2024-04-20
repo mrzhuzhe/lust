@@ -12,4 +12,5 @@ link_directories(${BOOST_LIBS})
 
 link_libraries(boost_system  boost_filesystem)
 
-add_executable(${target_name} main.cpp)
+add_executable(simple simple.cpp)
+add_executable(spatial_index spatial_index.cpp)
