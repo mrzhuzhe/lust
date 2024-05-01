@@ -1,5 +1,5 @@
 // https://www.boost.org/doc/libs/1_85_0/libs/geometry/doc/html/geometry/spatial_indexes/rtree_quickstart.html
-
+// topologic algorithem is quite good https://www.boost.org/doc/libs/1_83_0/libs/geometry/doc/html/geometry/reference/algorithms.html
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point.hpp>
 #include <boost/geometry/geometries/box.hpp>
@@ -101,6 +101,44 @@ int main()
     // bg::append(ring, point(4.0, -0.5));
 
     create_svg("./build/bin/test.svg", ring, result_s[1].first);
+
+    bg::model::polygon<bg::model::d2::point_xy<float> > poly;
+    bg::read_wkt("POLYGON((1.5 0.5, 1.5 2.5, 3 3, 3.5 2.5, 3.5 0.5, 1.5 0.5))", poly);
+    
+    create_svg("./build/bin/test_wkt.svg", ring, poly);
+
+    bool check_covered = false;
+    check_covered = bg::covered_by(ring, poly);
+    if (check_covered) {
+         std::cout << "Covered: Yes" << std::endl;
+    } else {
+        std::cout << "Covered: No" << std::endl;
+    }
+
+    bool check_cross = false;
+    check_cross = bg::crosses(ring, poly);
+    if (check_cross) {
+         std::cout << "Cross: Yes" << std::endl;
+    } else {
+        std::cout << "Cross: No" << std::endl;
+    }
+
+    typedef boost::geometry::model::d2::point_xy<float> point_type;
+    typedef boost::geometry::model::polygon<point_type> polygon_type;
+
+    polygon_type poly2;
+    // boost::geometry::read_wkt(
+    //     "POLYGON((0 0,0 10,10 10,10 0,0 0),(1 1,4 1,4 4,1 4,1 1))", poly2);
+    boost::geometry::read_wkt(
+        "POLYGON((0 0,0 10,10 10,10 0,0 0))", poly2);
+
+    polygon_type res;
+
+    boost::geometry::densify(poly2, res, 6.0);
+
+    std::cout << "densified: " << boost::geometry::wkt(res) << std::endl;
+
+    create_svg("./build/bin/test_densify.svg", poly2, res);
 
     return 0;
 }
