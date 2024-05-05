@@ -11,9 +11,8 @@ include_directories(${BOOST_INC})
 link_directories(${BOOST_LIBS})
 
 find_package(CGAL REQUIRED)
-link_libraries(boost_system  boost_filesystem)
+link_libraries(boost_system  boost_filesystem CGAL::CGAL)
 
 add_executable(simple simple.cpp)
-target_link_libraries(simple  CGAL::CGAL)
 
 set( CMAKE_BUILD_TYPE Release) 
