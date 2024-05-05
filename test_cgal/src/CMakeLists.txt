@@ -14,5 +14,6 @@ find_package(CGAL REQUIRED)
 link_libraries(boost_system boost_filesystem CGAL::CGAL)
 
 add_executable(simple simple.cpp)
+add_executable(surface_mesh surface_mesh.cpp)
 
 set(CMAKE_BUILD_TYPE Release) 
