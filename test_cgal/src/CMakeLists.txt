@@ -10,6 +10,10 @@ set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 include_directories(${BOOST_INC})
 link_directories(${BOOST_LIBS})
 
+find_package(CGAL REQUIRED)
 link_libraries(boost_system  boost_filesystem)
 
 add_executable(simple simple.cpp)
+target_link_libraries(simple  CGAL::CGAL)
+
+set( CMAKE_BUILD_TYPE Release) 
