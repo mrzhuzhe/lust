@@ -11,9 +11,7 @@ include_directories(${BOOST_INC})
 link_directories(${BOOST_LIBS})
 
 find_package(CGAL REQUIRED)
-link_libraries(boost_system boost_filesystem )
-
-include_directories(CGAL::CGAL) # include not link
+link_libraries(boost_system boost_filesystem CGAL::CGAL)
 
 add_executable(simple simple.cpp)
 
