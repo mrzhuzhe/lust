@@ -10,10 +10,15 @@ set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 include_directories(${BOOST_INC})
 link_directories(${BOOST_LIBS})
 
-find_package(CGAL REQUIRED)
+find_package(CGAL REQUIRED OPTIONAL_COMPONENTS Qt6)
 link_libraries(boost_system boost_filesystem CGAL::CGAL)
 
 add_executable(simple simple.cpp)
 add_executable(surface_mesh surface_mesh.cpp)
 
 set(CMAKE_BUILD_TYPE Release) 
+
+if(CGAL_Qt6_FOUND)
+  target_link_libraries(surface_mesh PUBLIC CGAL::CGAL_Basic_viewer)
+  message(STATUS QT founded)
+endif()
