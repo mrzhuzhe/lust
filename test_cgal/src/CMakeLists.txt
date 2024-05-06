@@ -10,7 +10,7 @@ set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 include_directories(${BOOST_INC})
 link_directories(${BOOST_LIBS})
 
-find_package(CGAL REQUIRED OPTIONAL_COMPONENTS Qt6)
+find_package(CGAL REQUIRED COMPONENTS Qt6)
 link_libraries(boost_system boost_filesystem CGAL::CGAL)
 
 add_executable(simple simple.cpp)
