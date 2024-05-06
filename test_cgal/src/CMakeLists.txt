@@ -15,10 +15,11 @@ link_libraries(boost_system boost_filesystem CGAL::CGAL)
 
 add_executable(simple simple.cpp)
 add_executable(surface_mesh surface_mesh.cpp)
-
+add_executable(triangular triangular.cpp)
 set(CMAKE_BUILD_TYPE Release) 
 
 if(CGAL_Qt6_FOUND)
   target_link_libraries(surface_mesh PUBLIC CGAL::CGAL_Basic_viewer)
+  target_link_libraries(triangular PUBLIC CGAL::CGAL_Basic_viewer)
   message(STATUS QT founded)
 endif()
