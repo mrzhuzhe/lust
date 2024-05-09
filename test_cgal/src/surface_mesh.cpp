@@ -11,6 +11,9 @@
 #include <CGAL/compute_average_spacing.h>
 #include <CGAL/grid_simplify_point_set.h>
 
+#include <CGAL/jet_smooth_point_set.h>
+#include <CGAL/jet_estimate_normals.h>
+#include <CGAL/mst_orient_normals.h>
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
 typedef Kernel::FT FT;
@@ -68,12 +71,29 @@ int main(int argc, char** argv) {
     // keep only one point per cell
     // Compute average spacing using neighborhood of 6 points
     double spacing = CGAL::compute_average_spacing<CGAL::Sequential_tag> (points, 6);
+    // CGAL::jet_smooth_point_set<CGAL::Sequential_tag> (points, 24);
+
     // Simplify using a grid of size 2 * average spacing
     typename Point_set::iterator gsim_it = CGAL::grid_simplify_point_set (points, 2. * spacing);
     points.remove(gsim_it, points.end());
     std::cout << points.number_of_removed_points()
                 << " point(s) removed after simplification." << std::endl;
     points.collect_garbage();
+
+    /*  https://doc.cgal.org/latest/Point_set_processing_3/group__PkgPointSetProcessing3Algorithms.html#ga96a3738be3b2b9bd1587af78ae10e67a 
+        dependence on eigen
+    */
+    CGAL::jet_smooth_point_set<CGAL::Sequential_tag> (points, 24);
+
+    // normal estimae
+    CGAL::jet_estimate_normals<CGAL::Sequential_tag>
+      (points, 24); // Use 24 neighbors
+    // Orientation of normals, returns iterator to first unoriented point
+    typename Point_set::iterator unoriented_points_begin =
+      CGAL::mst_orient_normals(points, 24); // Use 24 neighbors
+    points.remove (unoriented_points_begin, points.end());
+    std::cout << points.number_of_removed_points()
+                << " point(s) removed after simplification." << std::endl;
 
     return 0;
 }
