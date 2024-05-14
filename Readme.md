@@ -6,11 +6,12 @@
 ## Thought
 
 1. 3D Delaunay Triangulations https://doc.cgal.org/latest/Triangulation_3/index.html#title1
+2. opencascade
 
 
 ## dependences
 1. boost 
-2. cgal eigen qt
+2. cgal eigen qt gmp mpfr
 
 ## references
 
