@@ -60,8 +60,8 @@ int main()
 
   //std::cout <<  cdt.size() << std::endl;
   //DT2 dt2(points.begin(), points.end());
-  //CGAL::draw(cdt);
-  CGAL::draw(dt2);
-  CGAL::draw(points);
+  CGAL::draw(cdt);
+  // CGAL::draw(dt2);
+  //CGAL::draw(points);
   return EXIT_SUCCESS;
 }
