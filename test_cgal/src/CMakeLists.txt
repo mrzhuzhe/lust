@@ -18,6 +18,9 @@ add_executable(simple simple.cpp)
 add_executable(surface_mesh surface_mesh.cpp)
 add_executable(triangular triangular.cpp)
 add_executable(triangular2d triangular2d.cpp)
+
+add_executable(kernel kernel.cpp)
+
 set(CMAKE_BUILD_TYPE Release) 
 
 if(CGAL_Qt6_FOUND)
