@@ -21,11 +21,11 @@ const int RED= 1;
 const int BLACK=2;
 
 int main() {
-    CGAL::Cartesian<double>::Point_2 p(1.0, 1.0), q;
-    CGAL::Cartesian<double>::Vector_2 v;
-    v = p - CGAL::ORIGIN;
-    q = CGAL::ORIGIN + v;
-    assert( p == q );
+    CGAL::Cartesian<double>::Point_2 p_2(1.0, 1.0), q_2;
+    CGAL::Cartesian<double>::Vector_2 v_2;
+    v_2 = p_2 - CGAL::ORIGIN;
+    q_2 = CGAL::ORIGIN + v_2;
+    assert( p_2 == q_2 );
 
     Point a(0,0), b(1,0), c(1,1), d(0,1);
     a.color()=RED;
