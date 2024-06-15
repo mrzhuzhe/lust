@@ -15,7 +15,7 @@
 	PIConGPU QUDA
 	AUTODECKGPU Bwa DeepVariant 
 	Genomework Relion3
-5. 极小曲面的局部法
+5. 极小曲面的局部法 / 全局法 ，对应拉普拉斯算子平滑/编辑
 
 ## dependences
 1. boost 
