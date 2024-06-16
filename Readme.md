@@ -21,6 +21,7 @@
 	(b) mean ratio
 	(c) asoect / raduis ratio
 	(d) sigular values
+libs： triangular tetgen
 
 ## dependences
 1. boost 
