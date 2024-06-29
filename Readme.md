@@ -22,6 +22,7 @@
 	(c) asoect / raduis ratio
 	(d) sigular values
 libs： triangular tetgen
+7. 用向量场合成纹理
 
 ## dependences
 1. boost 
