@@ -24,7 +24,7 @@
 libs： triangular tetgen
 7. 用向量场合成纹理
 8. 用jacobian 可以度量映射前后每个点的 收缩 扩张， 翻转
-	也可以保形 保角 映射
+	也可以保形 保角 comformal 共形映射
 
 ## dependences
 1. boost 
