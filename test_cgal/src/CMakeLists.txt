@@ -20,10 +20,12 @@ add_executable(triangular triangular.cpp)
 add_executable(triangular2d triangular2d.cpp)
 
 add_executable(kernel kernel.cpp)
+add_executable(draw_arrangment draw_arrangment.cpp)
 
 set(CMAKE_BUILD_TYPE Release) 
 
 if(CGAL_Qt6_FOUND)
+  target_link_libraries(draw_arrangment PUBLIC CGAL::CGAL_Basic_viewer)
   target_link_libraries(surface_mesh PUBLIC CGAL::CGAL_Basic_viewer)
   target_link_libraries(triangular PUBLIC CGAL::CGAL_Basic_viewer)
   target_link_libraries(triangular2d PUBLIC CGAL::CGAL_Basic_viewer)
