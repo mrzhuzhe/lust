@@ -10,6 +10,6 @@ set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 link_directories(${opencv4_libary_path})
 include_directories(${opencv4_include_path})
 
-add_executable(${target_name} main.cpp)
+add_executable(topk_navie topk_navie.cpp)
 
-target_link_libraries(${target_name} opencv_core opencv_imgproc opencv_highgui)
+target_link_libraries(topk_navie opencv_core opencv_imgproc opencv_highgui)

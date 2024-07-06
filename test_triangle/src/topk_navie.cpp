@@ -2,12 +2,12 @@
 #include <opencv2/opencv.hpp>
 #include <random>
 
-void draw_line(cv::Mat& image, cv::Mat& topk_mat, std::vector<int>& vec_px, std::vector<int>& vec_py,int size) {
+void draw_line(cv::Mat& image, cv::Mat& topk_mat, std::vector<int>& vec_px, std::vector<int>& vec_py, int size, int topk) {
    //  cv::Point p1(0, 0);
    //  cv::Point p2(0, 0);
    int index = 0;
    for (int i=0;i<size;i++){
-      for (int j=0;j<2;j++){
+      for (int j=0;j<topk;j++){
         index = topk_mat.at<float>(i, j);
         cv::Point p1(vec_px.at(i), vec_py.at(i));
         cv::Point p2(vec_px.at(index), vec_py.at(index));
@@ -31,7 +31,7 @@ int main(){
     int n = 40; // 80 point
     for (int i=0;i<n;i++){
       int p1x = distr(gen) , p1y = distr(gen), p2x = distr(gen), p2y = distr(gen);
-      std::cout << "p1x p1y " << p1x << " " << p1y << " p2x p2y " << p2x << " " << p2y << " " << std::endl; // generate numbers
+      //std::cout << "p1x p1y " << p1x << " " << p1y << " p2x p2y " << p2x << " " << p2y << " " << std::endl; // generate numbers
       cv::Point p1(p1x, p1y);
       cv::Point p2(p2x, p2y);
       vec_px.push_back(p1x);
@@ -54,34 +54,36 @@ int main(){
     //std::cout << dis_mat << std::endl;
     
     // get topk 
-    cv::Mat top2_mat(size, 2, CV_32F);
-    float min1 = 0, min2 =0;
-    int min1_index = 0, min2_index =0;
+    int topk = 10;
+    cv::Mat top2_mat(size, topk, CV_32F);
+    std::vector<float> mink(topk);
+    std::vector<int> indexk(topk);
     for (int i=0;i<size;i++){
-      min1 = 9999999999999999, min2 = 99999999999999999;
+      for (int k=0; k < topk; k ++) {
+        mink[k] = 999999999999999999.f; 
+      }
       for (int j=0;j<size;j++){
         if (i == j) {
           continue;
         }
-        if (dis_mat.at<float>(i, j) < min2 ) {
-          min2 = dis_mat.at<float>(i, j);
-          min2_index = j;
+        for (int k=topk; k >=0; k--) {
+          if (dis_mat.at<float>(i, j) < mink[k] ) {
+            if (k<topk-1){
+              mink[k+1] = mink[k];
+              indexk[k+1] = indexk[k];
+            }
+            mink[k] = dis_mat.at<float>(i, j);
+            indexk[k] = j;
+          }
         }
-        if (dis_mat.at<float>(i, j) < min1 ) {
-          min2 = min1;
-          min1 = dis_mat.at<float>(i, j);
-          min2_index = min1_index;
-          min1_index = j;
-        }
-        // top 1
-        top2_mat.at<float>(i, 0) = min1_index;
-        // top 2
-        top2_mat.at<float>(i, 1) = min2_index;  
+        for (int k=0;k<topk;k++) {
+          top2_mat.at<float>(i, k) = indexk[k];
+        }         
       }
     }
     //std::cout << "\n" <<  top2_mat << std::endl;
 
-    draw_line(image, top2_mat, vec_px, vec_py, size);
+    draw_line(image, top2_mat, vec_px, vec_py, size, topk);
     
     int key = 0;
     while(key != 27)
