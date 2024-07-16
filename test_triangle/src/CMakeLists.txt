@@ -11,5 +11,7 @@ link_directories(${opencv4_libary_path})
 include_directories(${opencv4_include_path})
 
 add_executable(topk_navie topk_navie.cpp)
-
 target_link_libraries(topk_navie opencv_core opencv_imgproc opencv_highgui)
+
+add_executable(bezier bezier.cpp)
+target_link_libraries(bezier opencv_core opencv_imgproc opencv_highgui)
