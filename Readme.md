@@ -7,6 +7,7 @@
 
 1. 3D Delaunay Triangulations https://doc.cgal.org/latest/Triangulation_3/index.html#title1
 Bowyer–Watson algorithm https://github.com/bl4ckb0ne/delaunay-triangulation/tree/master
+gdel3d https://github.com/ashwin/gStar4D/blob/master/gdel3d_thesis.pdf
 2. opencascade
 3. z80 6502 visualizer http://www.visual6502.org/JSSim/expert-z80.html
 4. 
