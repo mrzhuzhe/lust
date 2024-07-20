@@ -2,7 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include "Bezier.h"
 #include <iostream>
-
+#include <vector>
 Bezier::Bezier()
 : Curve()
 {
@@ -66,16 +66,23 @@ int main(){
     cv::Mat image(rows, cols, CV_32F);
     
     Curve* curve = new Bezier();
-	curve->set_steps(100); // generate 100 interpolate points between the last 4 way points
-	curve->add_way_point(Vector(50, 50, 0));
-	curve->add_way_point(Vector(100, 150, 0));
-	curve->add_way_point(Vector(150, 100, 0));
-	curve->add_way_point(Vector(200, 300, 0));
+	curve->set_steps(1000); // generate 100 interpolate points between the last 4 way points
+    std::vector xlist = {40, 50, 100, 150, 200, 300};
+    std::vector ylist = {40, 90, 160, 50, 300, 300};
+    cv::Point p0{0, 0};
+    for (int i=0; i< xlist.size(); i++) {
+        curve->add_way_point(Vector(xlist[i], ylist[i], 0));
+        image.at<float>(xlist[i], ylist[i]) = 255;
+        p0.y = xlist[i];
+        p0.x = ylist[i];
+        cv::circle(image, p0, 10, 255);
+    }
+    
 	std::cout << "nodes: " << curve->node_count() << std::endl;
 	std::cout << "total length: " << curve->total_length() << std::endl;
 	for (int i = 0; i < curve->node_count(); ++i) {
 		//std::cout << "node #" << i << ": " << curve->node(i).toString() << " (length so far: " << curve->length_from_starting_point(i) << ")" << std::endl;
-        //std::cout << curve->node(i).x << " " << curve->node(i).x  << std::endl;
+        std::cout << " " << i << " " << curve->node(i).x << " " << curve->node(i).x  << std::endl;
         image.at<float>(curve->node(i).x, curve->node(i).y) = 255;
     }
 
