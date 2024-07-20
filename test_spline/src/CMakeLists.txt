@@ -12,4 +12,6 @@ include_directories(${opencv4_include_path} ../include)
 
 link_libraries(opencv_core opencv_imgproc opencv_highgui)
 
-add_executable(bezier bezier.cpp)
+add_executable(bezier_test Bezier.cpp)
+add_library(Common Curve.cpp Vector.cpp)
+target_link_libraries(bezier_test Common)
