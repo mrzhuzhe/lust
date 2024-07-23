@@ -269,7 +269,7 @@ rst::rasterizer::rasterizer(int w, int h) : width(w), height(h)
 
 int rst::rasterizer::get_index(int x, int y)
 {
-    return (height-y)*width + x;
+    return (height-1-y)*width + x;
 }
 
 
