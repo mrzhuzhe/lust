@@ -172,12 +172,12 @@ int main(int argc, const char** argv)
 
         std::cout << "frame count: " << frame_count++ << '\n';
         // Todo this is not work
-        if (key == 'a') {
-            angle += 10;
-        }
-        else if (key == 'd') {
-            angle -= 10;
-        }
+        // if (key == 'a') {
+        //     angle += 10;
+        // }
+        // else if (key == 'd') {
+        //     angle -= 10;
+        // }
     }
 
     return 0;
