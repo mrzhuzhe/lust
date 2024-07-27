@@ -184,6 +184,7 @@ int main(int argc, const char** argv)
 
     std::string filename = "output.png";
     objl::Loader Loader;
+    // Todo need load relative path with bin
     std::string obj_path = "../models/spot/";
 
     // Load .obj File
@@ -208,7 +209,7 @@ int main(int argc, const char** argv)
     auto texture_path = "hmap.jpg";
     r.set_texture(Texture(obj_path + texture_path));
 
-    std::function<Eigen::Vector3f(fragment_shader_payload)> active_shader;
+    std::function<Eigen::Vector3f(fragment_shader_payload)> active_shader = texture_fragment_shader;
 
     if (argc >= 2)
     {
@@ -286,7 +287,7 @@ int main(int argc, const char** argv)
         cv::imshow("image", image);
         cv::imwrite(filename, image);
         key = cv::waitKey(10);
-
+        // Todo add rotae support
         if (key == 'a')
         {
             angle -= 0.1;
