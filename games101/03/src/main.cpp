@@ -2,6 +2,11 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
+#include "rasterizer.hpp"
+#include "Triangle.hpp"
+#include "Shader.hpp"
+#include "Texture.hpp"
+#include "OBJ_Loader.h"
 
 int main(int argc, const char** argv)
 {
@@ -17,7 +22,7 @@ int main(int argc, const char** argv)
 
     //rst::rasterizer r(700, 700);
 
-    Eigen::Vector3f eye_pos = {0, 0, 5};
+    //Eigen::Vector3f eye_pos = {0, 0, 5};
      
     std::cout << "load model firtst" << std::endl;
 
