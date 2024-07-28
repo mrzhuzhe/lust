@@ -179,6 +179,7 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload &payload)
 int main(int argc, const char** argv)
 {
     boost::filesystem::path exe_path = boost::dll::program_location().parent_path();
+    exe_path += "/";
 
     std::vector<Triangle *> TriangleList;
 
@@ -187,10 +188,10 @@ int main(int argc, const char** argv)
 
     std::string filename = exe_path.string() + "output.png";
     objl::Loader Loader;
-    std::string obj_path = exe_path.string() + "/../models/spot/";
+    std::string obj_path = exe_path.string() + "../models/spot/";
 
     // Load .obj File
-    bool loadout = Loader.LoadFile(exe_path.string() + "/../models/spot/spot_triangulated_good.obj");
+    bool loadout = Loader.LoadFile(exe_path.string() + "../models/spot/spot_triangulated_good.obj");
     for (auto mesh : Loader.LoadedMeshes)
     {
         for (int i = 0; i < mesh.Vertices.size(); i += 3)
