@@ -7,6 +7,7 @@
 #include "Shader.hpp"
 #include "Texture.hpp"
 #include "OBJ_Loader.h"
+#include <boost/dll.hpp>
 
 #define MY_PI 3.1415926
 
@@ -177,18 +178,19 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload &payload)
 
 int main(int argc, const char** argv)
 {
+    boost::filesystem::path exe_path = boost::dll::program_location().parent_path();
+
     std::vector<Triangle *> TriangleList;
 
     float angle = 140.0;
     bool command_line = false;
 
-    std::string filename = "output.png";
+    std::string filename = exe_path.string() + "output.png";
     objl::Loader Loader;
-    // Todo need load relative path with bin
-    std::string obj_path = "../models/spot/";
+    std::string obj_path = exe_path.string() + "/../models/spot/";
 
     // Load .obj File
-    bool loadout = Loader.LoadFile("../models/spot/spot_triangulated_good.obj");
+    bool loadout = Loader.LoadFile(exe_path.string() + "/../models/spot/spot_triangulated_good.obj");
     for (auto mesh : Loader.LoadedMeshes)
     {
         for (int i = 0; i < mesh.Vertices.size(); i += 3)
@@ -206,7 +208,7 @@ int main(int argc, const char** argv)
 
     rst::rasterizer r(700, 700);
 
-    auto texture_path = "hmap.jpg";
+    auto texture_path = "spot_texture.png";
     r.set_texture(Texture(obj_path + texture_path));
 
     std::function<Eigen::Vector3f(fragment_shader_payload)> active_shader = texture_fragment_shader;
@@ -287,7 +289,7 @@ int main(int argc, const char** argv)
         cv::imshow("image", image);
         cv::imwrite(filename, image);
         key = cv::waitKey(10);
-        // Todo add rotae support
+        // Todo add rotate support, zoom in zoom out
         if (key == 'a')
         {
             angle -= 0.1;
