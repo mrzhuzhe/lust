@@ -105,7 +105,7 @@ int main(int argc, const char** argv)
 
     std::string filename = exe_path.string() + "output.png";
     objl::Loader Loader;
-    std::string obj_path = exe_path.string() + "../models/spot/";
+    std::string obj_path = exe_path.string() + "../../03/models/spot/";
 
     std::vector<Eigen::Vector3f> pos;
 
@@ -114,7 +114,7 @@ int main(int argc, const char** argv)
     std::vector<Eigen::Vector3f> cols;
     
     // Load .obj File
-    bool loadout = Loader.LoadFile(exe_path.string() + "../models/spot/spot_triangulated_good.obj");
+    bool loadout = Loader.LoadFile(exe_path.string() + "../../03/models/spot/spot_triangulated_good.obj");
     for (auto mesh : Loader.LoadedMeshes)
     {
         for (int i = 0; i < mesh.Vertices.size(); i += 3)
@@ -136,7 +136,7 @@ int main(int argc, const char** argv)
     auto pos_id = r.load_positions(pos);
     auto ind_id = r.load_indices(ind);
     auto col_id = r.load_colors(cols);
-    
+
     int key = 0;
     int frame_count = 0;
 
