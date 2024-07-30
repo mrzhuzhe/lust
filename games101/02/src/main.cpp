@@ -24,10 +24,19 @@ Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 Eigen::Matrix4f get_model_matrix(float rotation_angle)
 {
     Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
+    
+    double theta = rotation_angle/180.0 * MY_PI;
+
+    Eigen::Matrix4f mr;
+
+    mr << std::cos(theta),-std::sin(theta),0,0,
+            std::sin(theta),std::cos(theta),0,0,
+            0,0,1,0,
+            0,0,0,1;
+
+    model = mr * model;
 
     return model;
-
-    // Edit end
 }
 
 Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
@@ -172,12 +181,12 @@ int main(int argc, const char** argv)
 
         std::cout << "frame count: " << frame_count++ << '\n';
         // Todo this is not work
-        // if (key == 'a') {
-        //     angle += 10;
-        // }
-        // else if (key == 'd') {
-        //     angle -= 10;
-        // }
+        if (key == 'a') {
+            angle += 10;
+        }
+        else if (key == 'd') {
+            angle -= 10;
+        }
     }
 
     return 0;
