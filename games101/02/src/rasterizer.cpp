@@ -8,7 +8,7 @@
 #include <math.h>
 #include <stdexcept>
 
-#define SSAA true
+#define SSAA false
 
 rst::pos_buf_id rst::rasterizer::load_positions(const std::vector<Eigen::Vector3f> &positions)
 {
