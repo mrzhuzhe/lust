@@ -187,6 +187,24 @@ int main(int argc, const char** argv)
         else if (key == 'd') {
             angle -= 10;
         }
+        else if (key == 'j') {
+            eye_pos.x() += 10;
+        }
+        else if (key == 'l') {
+            eye_pos.x() -= 10;
+        }
+        else if (key == 'i') {
+            eye_pos.y() += 10;
+        }
+        else if (key == 'k') {
+            eye_pos.y() -= 10;
+        }
+        else if (key == 'y') {
+            eye_pos.z() += 10;
+        }
+        else if (key == 'h') {
+            eye_pos.z() -= 10;
+        }
     }
 
     return 0;
