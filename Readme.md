@@ -28,6 +28,8 @@ libs： triangular tetgen
 7. 用向量场合成纹理
 8. 用jacobian 可以度量映射前后每个点的 收缩 扩张， 翻转
 	也可以保形 保角 comformal 共形映射
+9. C H O topo Computational Fluid Dynamics: Principles and Applications https://www.cfd-ca.de/
+	code can be found here https://booksite.elsevier.com/9780080999951/examplecodes.php
 
 ## dependences
 1. boost 
