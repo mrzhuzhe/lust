@@ -30,6 +30,8 @@ libs： triangular tetgen
 	也可以保形 保角 comformal 共形映射
 9. C H O topo Computational Fluid Dynamics: Principles and Applications https://www.cfd-ca.de/
 	code can be found here https://booksite.elsevier.com/9780080999951/examplecodes.php
+10. Curves and Surfaces for CAGD
+	code https://www.farinhansford.com/books/cagd/materials.html
 
 ## dependences
 1. boost 
