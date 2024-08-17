@@ -2,6 +2,26 @@
 
 > CFD Geometry and analog circuit project
 
+“”“
+# The rythems 
+
+不杀生 仇恨永无止境
+
+不偷盗 强弱与我何异
+
+不邪淫 一切有情皆孽
+
+不妄语 一切泡影空虚
+
+不馋酒 忧怖涨落无常
+
+不耽乐 芳华刹那而已
+
+不贪眠 苦苦不得解脱
+
+不纵欲 诸行了无生趣
+
+”“”
 
 ## Thought
 
