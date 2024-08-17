@@ -2,9 +2,9 @@
 
 > CFD Geometry and analog circuit project
 
-“”“
 
 # The poetry 
+```
 
 不杀生 仇恨永无止境
 
@@ -38,7 +38,7 @@ without sloth, life heavy like slavry !
 
 without greedy, nothing is interesting !!!!
 
-”“”
+```
 
 ## Thought
 
