@@ -73,6 +73,8 @@ libs： triangular tetgen
 10. Curves and Surfaces for CAGD
 	code https://www.farinhansford.com/books/cagd/materials.html
 
+11. z-buffer wireframe overlap
+
 ## dependences
 1. boost 
 2. cgal eigen qt gmp mpfr
