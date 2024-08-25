@@ -26,7 +26,7 @@
 //
 //*****************************************************************************
 
-#include "geometry.h"
+#include "geo/geometry.h"
 
 /// Returns maximum number of boundary nodes for given range of boundary types.
 ///

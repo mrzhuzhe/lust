@@ -17,26 +17,28 @@ add_library(bcond
   bcond/zeroResiduals.cpp 
   bcond/periodic.cpp)
 
+add_library(geo 
+  geo/geometry.cpp 
+  geo/readGrid.cpp
+  geo/dummyNodes.cpp
+  geo/generateEdgelist.cpp  
+  geo/deleteTmpElist.cpp  
+  geo/computeMetrics.cpp  
+  geo/faceVectorsVolumes.cpp
+  geo/faceVectorsVolumesBound.cpp  
+  geo/checkMetrics.cpp  
+  geo/faceVectorsSymm.cpp
+  geo/volumeProjections.cpp)
+
 add_executable(main 
-  main.cpp 
-  geometry.cpp 
+  main.cpp
   fluidProps.cpp
   spaceDiscr.cpp
   timeDiscr.cpp
   userInput.cpp
   solver.cpp
   output.cpp
-  initConstants.cpp
-  readGrid.cpp
-  dummyNodes.cpp
-  generateEdgelist.cpp
-  deleteTmpElist.cpp
-  computeMetrics.cpp
-  faceVectorsVolumes.cpp
-  faceVectorsVolumesBound.cpp
-  checkMetrics.cpp
-  faceVectorsSymm.cpp
-  volumeProjections.cpp
+  initConstants.cpp  
   getNumberBoundNodes.cpp  
   readSolution.cpp
   initSolution.cpp
@@ -67,4 +69,4 @@ add_executable(main
   dissipRoe1Prec.cpp 
   dissipRoe2Prec.cpp)
 
-  target_link_libraries(main bcond)
+  target_link_libraries(main bcond geo)

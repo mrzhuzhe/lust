@@ -33,7 +33,7 @@
 #include "defs.h"
 #include "bcond/bndConds.h"
 #include "fluidProps.h"
-#include "geometry.h"
+#include "geo/geometry.h"
 #include "output.h"
 #include "precond.h"
 #include "spaceDiscr.h"

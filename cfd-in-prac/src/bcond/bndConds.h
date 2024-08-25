@@ -31,7 +31,7 @@
 
 #include "defs.h"
 #include "fluidProps.h"
-#include "geometry.h"
+#include "../geo/geometry.h"
 #include "precond.h"
 
 /// @class BndConds
