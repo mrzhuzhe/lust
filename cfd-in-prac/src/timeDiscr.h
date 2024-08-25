@@ -30,7 +30,7 @@
 #define TIMEDISCR_H_INCLUDED
 
 #include "defs.h"
-#include "bndConds.h"
+#include "bcond/bndConds.h"
 #include "fluidProps.h"
 #include "geometry.h"
 #include "precond.h"

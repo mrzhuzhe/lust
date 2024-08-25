@@ -26,7 +26,7 @@
 //
 //*****************************************************************************
 
-#include "bndConds.h"
+#include "bcond/bndConds.h"
 #include "spaceDiscr.h"
 
 /// Computes gradients of the density, u, v, pressure and of the temperature

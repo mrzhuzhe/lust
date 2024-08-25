@@ -5,9 +5,21 @@ set( target_name main)
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin) 
 set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 
+include_directories(.)
 
+add_library(bcond 
+  bcond/bndConds.cpp
+  bcond/bcondInflow.cpp
+  bcond/bcondOutflow.cpp
+  bcond/bcondFarfield.cpp
+  bcond/bcondWallVisc.cpp
+  bcond/boundaryConditions.cpp
+  bcond/zeroResiduals.cpp 
+  bcond/periodic.cpp)
 
-add_executable(main main.cpp geometry.cpp 
+add_executable(main 
+  main.cpp 
+  geometry.cpp 
   fluidProps.cpp
   spaceDiscr.cpp
   timeDiscr.cpp
@@ -25,17 +37,11 @@ add_executable(main main.cpp geometry.cpp
   checkMetrics.cpp
   faceVectorsSymm.cpp
   volumeProjections.cpp
-  getNumberBoundNodes.cpp
-  bndConds.cpp
+  getNumberBoundNodes.cpp  
   readSolution.cpp
   initSolution.cpp
   dependentVars.cpp
-  boundaryConditions.cpp
-  writeSolution.cpp
-  bcondInflow.cpp
-  bcondOutflow.cpp
-  bcondFarfield.cpp
-  bcondWallVisc.cpp
+  writeSolution.cpp  
   limiterRefVals.cpp
   outputConvergence.cpp
   outputSurfaces.cpp
@@ -52,8 +58,6 @@ add_executable(main main.cpp geometry.cpp
   fluxRoe1.cpp 
   fluxRoe2.cpp 
   fluxWalls.cpp 
-  zeroResiduals.cpp 
-  periodic.cpp 
   irsmoo.cpp 
   gradients.cpp 
   limiterInit.cpp 
@@ -62,3 +66,5 @@ add_executable(main main.cpp geometry.cpp
   fluxViscous.cpp 
   dissipRoe1Prec.cpp 
   dissipRoe2Prec.cpp)
+
+  target_link_libraries(main bcond)
