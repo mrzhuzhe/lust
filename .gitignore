@@ -5,3 +5,5 @@ cgal
 eigen
 cfd-in-practice
 inputs
+*.ugr
+*.v2d

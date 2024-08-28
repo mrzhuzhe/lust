@@ -34,6 +34,7 @@
 #include "geometry.h"
 #include "streamIO.h"
 
+
 using namespace std;
 
 /// Reads in grid data and boundary segments.
@@ -46,9 +47,10 @@ void Geometry::ReadGrid()
   int    i, ib, ibn, ibf, ibegf, iendf, ibegn, iendn;
   string str;
 
-  // open file
+  // open file 
+  
+  ifstream stream(fnameGrid);
 
-  ifstream stream( fnameGrid );
   if (stream.fail()) throw runtime_error( "could not open grid file." );
 
   str = ReadLine( stream );

@@ -57,8 +57,9 @@ void UserInput::Read( const char *fileName, Solver &solver, Output &output )
 
   str = ReadLine( stream );
   str = ReadLine( stream );
-  solver.geometry.fnameGrid = ReadLine( stream );
 
+  solver.geometry.fnameGrid = ReadLine( stream );
+  
   str = ReadLine( stream );
   str = ReadLine( stream );
   output.fnameFlow = ReadLine( stream );

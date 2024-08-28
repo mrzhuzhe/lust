@@ -1,7 +1,8 @@
 cmake_minimum_required (VERSION 3.0)
 project(CFD_IN_PRAC_test)
 
-set( target_name main)
+set(CMAKE_CXX_STANDARD 14)
+
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin) 
 set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 
@@ -78,3 +79,5 @@ add_executable(main
   )
 
   target_link_libraries(main bcond geo spacedisc solver)
+
+  set(CMAKE_CXX_FLAGS "-g")

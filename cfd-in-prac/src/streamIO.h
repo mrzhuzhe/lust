@@ -62,7 +62,7 @@ inline string ReadLine( ifstream &stream )
     if ((int)ic > 0) str.erase( str.begin(),str.begin()+ic );
 
     // get rid of trailing spaces
-    ic = str.find_last_not_of( ' ' );
+    ic = str.find_last_not_of( " \t\f\v\n\r" );
     if (ic != string::npos) str.erase( str.begin()+ic+1,str.end() );
 
   }

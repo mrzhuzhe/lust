@@ -12,7 +12,17 @@
             "args": [],
             "environment": [],
             "cwd": "/home/sanszhu/code/code/lust/games101/03/build"
-          }
-          
+        },
+        {
+            "name": "test2",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/mnt/e28833eb-0c99-4fe2-802a-09fa58d9c9f5/code/lust/cfd-in-prac/build/bin/main",
+            "args": [
+                "/home/sanszhu/code/code/lust/cfd-in-prac/inputs/channel_input"
+            ],
+            "environment": [],
+            "cwd": "/home/sanszhu/code/code/lust/games101/03/build"
+          } 
     ]
 }
