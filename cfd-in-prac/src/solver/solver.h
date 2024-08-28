@@ -36,7 +36,7 @@
 #include "geo/geometry.h"
 #include "output.h"
 #include "precond.h"
-#include "spaceDiscr.h"
+#include "spacedisc/spaceDiscr.h"
 #include "timeDiscr.h"
 
 /// @class Solver

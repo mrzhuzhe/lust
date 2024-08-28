@@ -34,7 +34,7 @@
 #include <iomanip>
 #include <string>
 #include "defs.h"
-#include "solver.h"
+#include "solver/solver.h"
 #include "output.h"
 
 using std::cout;

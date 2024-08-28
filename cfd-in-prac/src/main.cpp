@@ -47,7 +47,7 @@
 #include <stdexcept>
 #include "error.h"
 #include "output.h"
-#include "solver.h"
+#include "solver/solver.h"
 #include "userInput.h"
 
 using namespace std;

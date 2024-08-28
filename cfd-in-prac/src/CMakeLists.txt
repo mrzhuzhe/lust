@@ -28,45 +28,53 @@ add_library(geo
   geo/faceVectorsVolumesBound.cpp  
   geo/checkMetrics.cpp  
   geo/faceVectorsSymm.cpp
-  geo/volumeProjections.cpp)
+  geo/volumeProjections.cpp
+  geo/getNumberBoundNodes.cpp
+)
+
+add_library(spacedisc
+  spacedisc/spaceDiscr.cpp
+  spacedisc/dissipInit.cpp 
+  spacedisc/dissipRoe1.cpp 
+  spacedisc/dissipRoe2.cpp 
+  spacedisc/fluxRoe1.cpp 
+  spacedisc/fluxRoe2.cpp 
+  spacedisc/fluxWalls.cpp 
+  spacedisc/gradients.cpp 
+  spacedisc/limiterInit.cpp 
+  spacedisc/limiter.cpp 
+  spacedisc/gradientsVisc.cpp 
+  spacedisc/fluxViscous.cpp 
+  spacedisc/dissipRoe1Prec.cpp 
+  spacedisc/dissipRoe2Prec.cpp  
+  spacedisc/limiterRefVals.cpp
+)
+
+add_library(solver
+  solver/solver.cpp
+  solver/initConstants.cpp  
+  solver/readSolution.cpp  
+  solver/initSolution.cpp
+  solver/forces.cpp
+  solver/massFlow.cpp
+  solver/convergence.cpp
+  solver/writeSolution.cpp 
+)
 
 add_executable(main 
   main.cpp
   fluidProps.cpp
-  spaceDiscr.cpp
   timeDiscr.cpp
-  userInput.cpp
-  solver.cpp
-  output.cpp
-  initConstants.cpp  
-  getNumberBoundNodes.cpp  
-  readSolution.cpp
-  initSolution.cpp
-  dependentVars.cpp
-  writeSolution.cpp  
-  limiterRefVals.cpp
+  userInput.cpp  
+  output.cpp  
+  dependentVars.cpp 
   outputConvergence.cpp
   outputSurfaces.cpp
   outputFlowfield.cpp
   solve.cpp
-  densityChange.cpp
-  forces.cpp
-  massFlow.cpp
-  convergence.cpp 
-  dissipInit.cpp 
+  densityChange.cpp  
   timeStep.cpp 
-  dissipRoe1.cpp 
-  dissipRoe2.cpp 
-  fluxRoe1.cpp 
-  fluxRoe2.cpp 
-  fluxWalls.cpp 
   irsmoo.cpp 
-  gradients.cpp 
-  limiterInit.cpp 
-  limiter.cpp 
-  gradientsVisc.cpp 
-  fluxViscous.cpp 
-  dissipRoe1Prec.cpp 
-  dissipRoe2Prec.cpp)
+  )
 
-  target_link_libraries(main bcond geo)
+  target_link_libraries(main bcond geo spacedisc solver)

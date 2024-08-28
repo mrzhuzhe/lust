@@ -35,7 +35,7 @@
 #include <string>
 #include "defs.h"
 #include "bcond/bndConds.h"
-#include "spaceDiscr.h"
+#include "spacedisc/spaceDiscr.h"
 
 /// @class Output
 /// Encompasses data and functions required to output plot data

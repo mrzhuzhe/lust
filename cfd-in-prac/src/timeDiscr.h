@@ -34,7 +34,7 @@
 #include "fluidProps.h"
 #include "geo/geometry.h"
 #include "precond.h"
-#include "spaceDiscr.h"
+#include "spacedisc/spaceDiscr.h"
 
 /// @class TimeDiscr
 /// Encompasses data and functions related to temporal discretization
